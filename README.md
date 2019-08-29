@@ -76,9 +76,25 @@ console.log(i18n.ordinal(local.takeRight,14))
 console.log(i18n.range(local.daysRang,'0-1'))
 console.log(i18n.range(local.daysRang,'4-5'))
 
+```
 
+`node example/local.js`
+output:
+
+```shell
+hello world
+I have 1 hat
+I have 2 hats
+Take the twenty 1st right.
+Take the 12th right.
+Take the 102nd right.
+Take the 1103rd right.
+Take the 14th right.
+0-1 days
+4-5 days
 
 ```
+
 
 TODO:
 
