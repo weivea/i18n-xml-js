@@ -6,3 +6,6 @@ js端国际化处理方案
 http://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html
 
 
+TODO:
+
+xml转json
