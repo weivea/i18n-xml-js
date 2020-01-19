@@ -48,20 +48,20 @@ const i18n = new I18nJs({
 }, 'en');
 
 const local = i18n.local
-console.log(local.helloWorld)
+console.log(local.string.helloWorld)
 
 // 基数
-console.log(i18n.cardinal(local.haveHat, 1))
-console.log(i18n.cardinal(local.haveHat, 2))
+console.log(local.plurals.cardinal.haveHat(1))
+console.log(local.cardinal.haveHat(2));
 
-// 序数
-console.log(i18n.ordinal(local.takeRight,1))
-console.log(i18n.ordinal(local.takeRight,12))
-console.log(i18n.ordinal(local.takeRight,102))
-console.log(i18n.ordinal(local.takeRight,1103))
-console.log(i18n.ordinal(local.takeRight,14))
+// // 序数
+// console.log(i18n.ordinal(local.takeRight,1))
+// console.log(i18n.ordinal(local.takeRight,12))
+// console.log(i18n.ordinal(local.takeRight,102))
+// console.log(i18n.ordinal(local.takeRight,1103))
+// console.log(i18n.ordinal(local.takeRight,14))
 
-// 区间
-console.log(i18n.range(local.daysRang,'0-1'))
-console.log(i18n.range(local.daysRang,'4-5'))
+// // 区间
+// console.log(i18n.range(local.daysRang,'0-1'))
+// console.log(i18n.range(local.daysRang,'4-5'))
 

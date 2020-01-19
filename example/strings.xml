@@ -1,0 +1,24 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="citys">
+      <item>北京</item>
+      <item>上海</item>
+      <item>济南</item>
+      <item>青岛</item>
+    </string-array>
+    <plurals name="wastetime">
+      <item quantity="one">%d minute</item>
+      <item quantity="other">%d minutes</item>
+    </plurals>
+    <string name="welcome_messages">Hello, %1$s! You have %2$d new messages.</string>
+    <string name="app_name" translatable="false">GetApps</string>
+    <string name="pref_title_auto_update_market">Update "GetApps" automatically</string>
+    <string name="notif_button_update_all"><![CDATA[<font color=#ff6243>Update all</font>]]></string> <!--仅海外按钮高亮-->
+    <string name="btn_retry">TRY AGAIN</string>
+    <string name="btn_price">￥<xliff:g id="priceNumber">%1$s</xliff:g></string>
+    <string name="btn_progress"><xliff:g id="precentage">%1$d</xliff:g>%%</string>
+    <string name="btn_pausable">PAUSE</string>
+    <string name="user_agreement_msg"><![CDATA[To use the basic features of this service, you must agree that Xiaomi can collect, process, and use your personal data, including the personal data related to individual modules and services of GetApps. For example, Xiaomi will collect network information to optimize updating process, collect your comments and favorites to keep records of their content, collect activation time and paths to the items you view to improve the overall user experience, as well as collect other types of data in accordance with our Privacy Policy. Other types of data we collect and the data processing methods are described in our <a href=\"%1$s\">Privacy Policy</a>. Agree?]]></string>
+</resources>

@@ -1,32 +1,33 @@
-module.exports={
-  helloWorld: 'hello world',
-  haveHat: {
-    // 基数
+module.exports = {
+  sting: {
+    helloWorld: 'hello world'
+  },
+  plurals: {
+    // 复数：基本复数
     cardinal: {
-      // zero,
-      one: 'I have {{d1}} hat',
-      // two,
-      // few,
-      // many,
-      other: 'I have {{d1}} hats'
-    }
-    
-  },
-  takeRight: {
-    // 序数
+      haveHat: {
+        zero: 'I have no hats',
+        one: 'I have {{d1}} hat',
+        // two,
+        // few,
+        // many,
+        other: 'I have {{d1}} hats'
+      }
+    },
+    // 复数：序数
     ordinal: {
-      // zero,
-      one: 'Take the twenty {{d1}}st right.',
-      two: 'Take the {{d1}}nd right.',
-      few: 'Take the {{d1}}rd right.',
-      // many,
-      other: 'Take the {{d1}}th right.'
-    }
-  },
-  daysRang: {
-    // 区间
+      takeRight: {
+        // zero,
+        one: 'Take the twenty {{d1}}st right.',
+        two: 'Take the {{d1}}nd right.',
+        few: 'Take the {{d1}}rd right.',
+        // many,
+        other: 'Take the {{d1}}th right.'
+      }
+    },
+    // 复数：区间
     range: {
-      other: '{{d1}} days'
+      // xxx: {
       // one+two	,
       // one+few	,
       // one+many	,
@@ -43,7 +44,8 @@ module.exports={
       // other+two	,
       // other+few	,
       // other+many	,
-      // other+other	
+      // other+other
+      // }
     }
   }
-}
+};

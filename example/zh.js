@@ -1,25 +1,33 @@
-module.exports={
-  helloWorld: '你好世界',
-  haveHat: {
-    // 基数
+module.exports = {
+  sting: {
+    helloWorld: '你好世界'
+  },
+  plurals: {
+    // 复数：基本复数
     cardinal: {
+      haveHat: {
+        // zero,
+        // one,
+        // two,
+        // few,
+        // many,
+        other: '我有{{d1}}个帽子'
+      }
+    },
+    // 复数：序数
+    ordinal: {
+      // xxx: {
       // zero,
       // one,
       // two,
       // few,
       // many,
-      other: '我有{{d1}}个帽子'
+      // other
+      // }
     },
-    // 序数
-    ordinal: {
-        // zero,
-      // one,
-      // two,
-      // few,
-      // many,
-      //other
-    },
+    // 复数：区间
     range: {
+      // xxx: {
       // one+two	,
       // one+few	,
       // one+many	,
@@ -36,7 +44,8 @@ module.exports={
       // other+two	,
       // other+few	,
       // other+many	,
-      // other+other	
+      // other+other
+      // }
     }
   }
-}
+};

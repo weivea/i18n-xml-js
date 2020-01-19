@@ -1,102 +1,138 @@
-"use strict";
-exports.__esModule = true;
-var I18nJs = /** @class */ (function () {
-    /**
-     *
-     * @param langs 语言资源对象
-     * @param localLang 本地语言名
-     */
-    function I18nJs(langs, localLang) {
-        if (langs === void 0) { langs = {}; }
-        this.langs = langs;
-        this.local = {};
-        this.localLang = '';
-        if (localLang) {
-            this.setLocal(localLang);
-        }
+
+let local = 'en';
+//语言复数判断器
+export const pluralization = {
+  'zh': {
+    cardinal: (count)=>{
+      if (count == 0) {
+        return 'zero'
+      }
+      return 'other'
+    },
+    ordinal: (count)=>{
+      return 'other'
+    },
+    range: (count1, count2)=>{
+      return 'other'
     }
-    I18nJs.setPluralization = function (localLang, plural) {
-        if (typeof plural === 'function') {
-            plural = {
-                cardinal: plural
-            };
-        }
-        I18nJs.pluralization[localLang] = plural.cardinal;
-        I18nJs.pluralization[localLang].__proto__ = plural;
-    };
-    // 基本数字
-    I18nJs.prototype.cardinal = function (langs, count1) {
-        var langType = this.pluralization.cardinal(count1);
-        var langsTmp = langs.cardinal || langs;
-        var lang = langsTmp[langType];
-        return this._getLang(lang, count1);
-    };
-    // 序数
-    I18nJs.prototype.ordinal = function (langs, count1) {
-        var langType = this.pluralization.ordinal(count1);
-        var langsTmp = langs.ordinal || langs;
-        var lang = langsTmp[langType];
-        return this._getLang(lang, count1);
-    };
-    // 区间
-    I18nJs.prototype.range = function (langs, count1, count2) {
-        var langType = this.pluralization.range(count1);
-        var langsTmp = langs.range || langs;
-        var lang = langsTmp[langType];
-        return this._getLang(lang, count1, count2);
-    };
-    I18nJs.prototype._getLang = function (lang, a, b) {
-        var i = 0;
-        var args = arguments;
-        var re = lang.replace(/\{\{[^}]+\}\}/g, function (a) {
-            i++;
-            return args[i];
-        });
-        return re;
-    };
-    // 设置本地语
-    I18nJs.prototype.setLocal = function (localLang) {
-        this.localLang = localLang;
-        this.local = this.langs[localLang] || {};
-        this.pluralization = I18nJs.pluralization[localLang];
-    };
-    I18nJs.pluralization = {};
-    return I18nJs;
-}());
-exports.I18nJs = I18nJs;
-// 默认的中文复数判断
-I18nJs.setPluralization('zh', {
-    cardinal: function (count) {
-        return 'other';
+  },
+  'en': {
+    cardinal: (count)=>{
+      if (count == 0) {
+        return 'zero'
+      }
+      if (count == 1) {
+        return 'one'
+      }
+      return 'other'
     },
-    ordinal: function (count) {
-        return 'other';
+    ordinal: (n)=>{
+      if (n % 10 == 1 && n % 100 != 11) {
+        return 'one'
+      }
+      if (n % 10 == 2 && n % 100 != 12) {
+        return 'two'
+      }
+      if (n % 10 == 3 && n % 100 != 13) {
+        return 'few'
+      }
+      return 'other'
     },
-    range: function (count) {
-        return 'other';
+    range: (count1, count2)=>{
+      return 'other'
     }
-});
-// 默认的英文复数判断
-I18nJs.setPluralization('en', {
-    cardinal: function (count) {
-        if (count == 1) {
-            return 'one';
+  }
+}; 
+
+const i18nJsVMList = [];
+
+class I18nJsClass {
+  /**
+   * @param {*} opt 
+   * langs={en:..., zh:...}
+   */
+  constructor(langs={}){
+    this.langs = {}; // 所有语言
+    this.lang = {};// 当前语言
+    this.addLangs(langs);
+    this.updateLang();
+  }
+  
+
+  updateLang() {
+    this.lang = this.langs[local] || {};
+  }
+  addLangs(_langs) {
+    Object.assign(this.langs, _langs)
+  }
+  
+}
+
+// 添加语言复数判断器
+/**
+ * @param {*} _pluralizations 
+ * _pluralizations={en:..., zh:...}
+ */
+export function addPluralization(_pluralizations) {
+  Object.assign(pluralization, _pluralizations)
+}
+
+// 给外部调用的 复数判断器
+export const plurals={};
+Object.defineProperties(plurals, {
+  'cardinal': {
+    get() {
+      return function(plurals_cardinal, count, args) {
+        const type = pluralization[local].cardinal(count);
+        data = plurals_cardinal[type] || plurals_cardinal.other;
+        if(typeof data === 'function') {
+          data = data(args);
         }
-        return 'other';
-    },
-    ordinal: function (n) {
-        if (n % 10 == 1 && n % 100 != 11) {
-            return 'one';
-        }
-        if (n % 10 == 2 && n % 100 != 12) {
-            return 'two';
-        }
-        if (n % 10 == 3 && n % 100 != 13) {
-            return 'few';
-        }
-        return 'other';
-    },
-    range: function (count) {
-        return 'other';
+        return data
+      }
     }
-});
+  },
+  'ordinal': {
+    get() {
+      return function(plurals_ordinal, count, args) {
+        const type = pluralization[local].ordinal(count);
+        data = plurals_ordinal[type] || plurals_ordinal.other;
+        if(typeof data === 'function') {
+          data = data(args);
+        }
+        return data
+      }
+    }
+  },
+  'range': {
+    get() {
+      return function(plurals_range, count1, count2,args) {
+        const type = pluralization[local].range(count1, count2);
+        data = plurals_range[type] || plurals_range.other;
+        if(typeof data === 'function') {
+          data = data(args);
+        }
+        return data
+      }
+    }
+  }
+})
+
+export function setLocal(_local) {
+  if(local === _local) {
+    return;
+  }
+  local = _local;
+  i18nJsVMList.forEach((vm)=>{
+    vm.updateLang(local);
+  })
+}
+
+function I18nJs(opt) {
+  const ivm = new I18nJsClass(opt)
+  i18nJsVMList.push(ivm);
+  return ivm;
+}
+
+export default I18nJs;
+
