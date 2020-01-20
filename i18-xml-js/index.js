@@ -1,5 +1,7 @@
+import merge from 'lodash/merge';
+const defaultLocal = 'en';
+let local = defaultLocal;
 
-let local = 'en';
 //语言复数判断器
 export const pluralization = {
   'zh': {
@@ -46,21 +48,25 @@ export const pluralization = {
 
 const i18nJsVMList = [];
 
-class I18nJsClass {
+export class I18nJsClass {
   /**
-   * @param {*} opt 
-   * langs={en:..., zh:...}
+   * @param {翻译语言} langs 
+   * @param {默认用英语作为备份语言 default: 'en'} backup 
    */
-  constructor(langs={}){
+  constructor(langs={}, backup){
+    this.backup = backup || defaultLocal;
     this.langs = {}; // 所有语言
     this.lang = {};// 当前语言
     this.addLangs(langs);
     this.updateLang();
   }
   
-
   updateLang() {
-    this.lang = this.langs[local] || {};
+    let lang = this.langs[local] || {};
+    let backupLang = {}
+    merge(backupLang, this.langs[this.backup]);
+    merge(backupLang, lang);
+    this.lang = backupLang;
   }
   addLangs(_langs) {
     Object.assign(this.langs, _langs)
@@ -82,42 +88,49 @@ export const plurals={};
 Object.defineProperties(plurals, {
   'cardinal': {
     get() {
-      return function(plurals_cardinal, count, args) {
+      return function(plurals_cardinal, count, ...args) {
+        if(!plurals_cardinal) {return ''};
         const type = pluralization[local].cardinal(count);
-        data = plurals_cardinal[type] || plurals_cardinal.other;
+        let data = plurals_cardinal[type] || plurals_cardinal.other;
         if(typeof data === 'function') {
-          data = data(args);
+          data = data(...args);
         }
-        return data
+        return data || '';
       }
     }
   },
   'ordinal': {
     get() {
-      return function(plurals_ordinal, count, args) {
+      return function(plurals_ordinal, count, ...args) {
+        if(!plurals_ordinal) {return ''};
         const type = pluralization[local].ordinal(count);
-        data = plurals_ordinal[type] || plurals_ordinal.other;
+        let data = plurals_ordinal[type] || plurals_ordinal.other;
         if(typeof data === 'function') {
-          data = data(args);
+          data = data(...args);
         }
-        return data
+        return data || '';
       }
     }
   },
   'range': {
     get() {
-      return function(plurals_range, count1, count2,args) {
+      return function(plurals_range, count1, count2, ...args) {
+        if(!plurals_range) {return ''};
         const type = pluralization[local].range(count1, count2);
-        data = plurals_range[type] || plurals_range.other;
+        let data = plurals_range[type] || plurals_range.other;
         if(typeof data === 'function') {
-          data = data(args);
+          data = data(...args);
         }
-        return data
+        return data || '';
       }
     }
   }
 })
 
+/**
+ * 
+ * @param {语言} _local 
+ */
 export function setLocal(_local) {
   if(local === _local) {
     return;
@@ -128,8 +141,12 @@ export function setLocal(_local) {
   })
 }
 
-function I18nJs(opt) {
-  const ivm = new I18nJsClass(opt)
+/**
+ * @param {翻译语言} langs 
+ * @param {默认用英语作为备份语言 default: 'en'} backup 
+ */
+function I18nJs(langs, backup) {
+  const ivm = new I18nJsClass(langs, backup)
   i18nJsVMList.push(ivm);
   return ivm;
 }

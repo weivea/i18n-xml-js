@@ -3,20 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "dev": "tsc index.ts"
+  "bin": {
+    "parseFromXML": "./lib/parseFromStrings.xml.js"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "@babel/core": "^7.8.3",
     "@babel/parser": "^7.8.3",
     "@babel/preset-env": "^7.8.3",
-    "typescript": "^3.5.3"
-  },
-  "dependencies": {
     "@babel/generator": "^7.8.3",
     "glob": "^7.1.6",
+    "lodash": "^4.17.15",
     "traverse": "^0.6.6",
     "xml2js": "^0.4.23"
   }

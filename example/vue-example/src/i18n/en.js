@@ -1,12 +1,27 @@
 const local = {
   "array": {
-    "citys": ["北京", "上海", "济南", "青岛"]
+    "cities": ["beijing", "shanghai", "jinan", "qingdao"]
   },
   "plurals": {
     "cardinal": {
       "wastetime": {
         "one": (...arg) => `${arg[0]} minute`,
         "other": (...arg) => `${arg[0]} minutes`
+      }
+    },
+    "ordinal": {
+      takeRight: {
+        // zero,
+        one: (...args)=>`Take the twenty ${args[0]}st right.`,
+        two: (...args)=>`Take the ${args[0]}nd right.`,
+        few: (...args)=>`Take the ${args[0]}rd right.`,
+        // many,
+        other: (...args)=>`Take the ${args[0]}th right.`
+      }
+    },
+    "range":{
+      days: {
+        other: (...args)=>`${args[0]}–${args[0]} days`
       }
     }
   },
