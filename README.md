@@ -17,6 +17,10 @@ npm install i18n-xml-js --save
 
 ## Usage
 
+[Vue插件使用文档](https://github.com/weivea/i18n-xml-js/tree/master/vuePlugin.md)
+[React插件使用文档](https://github.com/weivea/i18n-xml-js/tree/master/reactPlugin.md)
+
+
 最简单的例子：
 ```javascript
 import I18nJs, {setLocal, addPluralization, plurals} from 'i18n-xml-js';
@@ -101,7 +105,7 @@ const zh={
 setLocal('en')
 
 // 'en' 相当于备用语言，如果en里有些字段没有，则用zh里的显示
-const i18n= new I18nJs({en, zh}, 'en')
+const i18n = I18nJs({en, zh}, 'en')
 
 const lang = i18n.lang;
 
@@ -122,7 +126,7 @@ plurals.cardinal(lang.plurals.ordinal.takeRight, 5, 5) // Take the 5th right.
 plurals.cardinal(lang.plurals.ordinal.takeRight, 1, 1) // Take the 1st right.
 
 // 区间复数 第一、二个数字用于判断复数类型，后边的参数用于模板字符串
-{plurals.range(lang.plurals.range.days, 1, 2, 1, 2) // 1–2 days
+plurals.range(lang.plurals.range.days, 1, 2, 1, 2) // 1–2 days
 
 
 // addPluralization(pluralization)
@@ -157,6 +161,8 @@ addPluralization({
 ## 编译符合android国际化规范的xml资源文件为js
 
 具体可以参考 [react-example](https://github.com/weivea/i18n-xml-js/tree/master/example/react-example)
+**需要注意的是Android下边没有基于序数和区间的复数规则~ 所以编译出的文件复数只有plurals.cardinal**
+
 
 package.json 添加scriprs 命令 `npm run parseFormXML`
 ##### 说明：i18n/\*\*/\*.xml 是我们要编译的文件
@@ -220,4 +226,70 @@ const local = {
   }
 };
 export default local;
+```
+
+## API说明
+
+### I18nJs
+
+国际化多语言实例工厂
+```javascript
+import I18nJs from 'i18n-xml-js';
+//...
+
+// I18nJs({语言资源对象}, '备用语言(一定要选择语言资源对象 里有的key)') 
+const i18n = I18nJs({en, zh, /* ..其他语言.. */}, 'en') 
+```
+
+### setLocal
+设置当前语言
+```javascript
+import {setLocal} from 'i18n-xml-js';
+//...
+// setLocal('当前语言')
+setLocal('en')
+```
+
+# addPluralization
+增加复数判断器 
+```javascript
+import {addPluralization} from 'i18n-xml-js';
+//...
+// addPluralization({复数规则解析对象})
+addPluralization({// 增加日语的复数判断器 
+  ja: {
+    // 基本复数
+    cardinal: (count)=>{
+      if (count == 0) {
+        return 'zero'
+      }
+      return 'other'
+    },
+    // 序数复数
+    ordinal: (count)=>{
+      return 'other'
+    },
+    // 区间复数
+    range: (count1, count2)=>{
+      return 'other'
+    }
+  }
+})
+```
+
+### plurals
+当前语言下的复数判断器
+```javascript
+import {plurals} from 'i18n-xml-js';
+//...
+// 基础的复数, 第一个数字用于判断复数类型，后边的参数用于模板字符串
+plurals.cardinal(lang.plurals.cardinal.wastetime, 5, 5) // 5 minutes
+plurals.cardinal(lang.plurals.cardinal.wastetime, 1, 1) // 1 minute
+
+//序数复数, 第一个数字用于判断复数类型，后边的参数用于模板字符串
+plurals.cardinal(lang.plurals.ordinal.takeRight, 5, 5) // Take the 5th right.
+plurals.cardinal(lang.plurals.ordinal.takeRight, 1, 1) // Take the 1st right.
+
+// 区间复数 第一、二个数字用于判断复数类型，后边的参数用于模板字符串
+plurals.range(lang.plurals.range.days, 1, 2, 1, 2) // 1–2 days
 ```
