@@ -1,9 +1,10 @@
 # i18n-xml-js
 
-js端的国际化 多语言处理方案，
-. 可以适配react， 建议v16.12.0 以上版本
-. 可以适配vue 2.x, 建议v2.6.x 以上版本 
-. 可以将android规范下的国际化多语言资源文件 strings.xml, 编译为自己所需要的js资源文件，
+js端的国际化 多语言处理方案，   
+
+. 可以适配react， 建议v16.12.0 以上版本  
+. 可以适配vue 2.x, 建议v2.6.x 以上版本    
+. 可以将android规范下的国际化多语言资源文件 strings.xml, 编译为自己所需要的js资源文件，   
 
 **复数判断参考**
 http://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html
