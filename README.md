@@ -21,6 +21,10 @@ npm install i18n-xml-js --save
 
 [React插件使用文档](https://github.com/weivea/i18n-xml-js/tree/master/reactPlugin.md)
 
+[Vue在线示例](https://weivea.github.io/i18n-xml-js/)   
+
+[React在线示例](https://weivea.github.io/i18n-xml-js/react/)
+
 
 最简单的例子：
 ```javascript
