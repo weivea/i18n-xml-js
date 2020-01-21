@@ -8,24 +8,25 @@
   </div>
 </template>
 <script>
-import I18nJs from 'i18-xml-js';
+import I18nJs from 'i18n-xml-js';
+const customI18Module = new I18nJs({
+  en:{
+    string:{
+      words: 'I`am independent translational content',
+      time: (...args)=>`The time is ${args[0]}`
+    }
+  },
+  zh: {
+    string:{
+      words: '我是独立的翻译内容',
+      time: (...args)=>`现在的时间是 ${args[0]}`
+    }
+  }
+});
 export default {
   name:'CustomI8',
   beforeCreate () {
-    this.$registerI18nModule('custom', new I18nJs({
-      en:{
-        string:{
-          words: 'I`am independent translational content',
-          time: (...args)=>`The time is ${args[0]}`
-        }
-      },
-      zh: {
-        string:{
-          words: '我是独立的翻译内容',
-          time: (...args)=>`现在的时间是 ${args[0]}`
-        }
-      }
-    }))
+    this.$registerI18nModule('custom', customI18Module)
   }
 }
 </script>

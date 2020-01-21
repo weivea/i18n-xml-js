@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
-import i18Plugin from 'i18-xml-js/lib/vue-plugin';
-import I18nJs, {addPluralization} from 'i18-xml-js';
+import i18Plugin from 'i18n-xml-js/lib/vue-plugin';
+import I18nJs, {addPluralization} from 'i18n-xml-js';
 
 import zh from './i18n/zh.js'
 import en from './i18n/en.js'

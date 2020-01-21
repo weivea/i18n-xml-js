@@ -1,6 +1,6 @@
 const local = {
   "array": {
-    "citys": ["北京", "上海", "济南", "青岛"]
+    "citys": ["BeiJing", "ShangHai", "JiNan", "QingDao"]
   },
   "plurals": {
     "cardinal": {

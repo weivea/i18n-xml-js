@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
@@ -23,7 +24,9 @@ if(/parseFromStrings\.xml.js$/.test(argument) || /parseFromStrings\.xml$/.test(a
 }
 const pattern = path.resolve(process.cwd(), argument);
 console.log(pattern);
-var files = glob.sync(pattern);
+var files = glob.sync(pattern, {
+  ignore: ['/**/node_modules/**', 'node_modules/**']
+});
 console.log(files);
 
 parseXml(files).then((d)=>{
@@ -119,6 +122,9 @@ export default local;`
 // 把数据处理成符合我们多语言的数据格式
 function handle2LocalForm(data) {
   const re = {};
+  if(!data || !data.resources) {
+    return re;
+  }
   const resources = data.resources;
   const stringArray = handleStringArray(resources['string-array']);
   const plurals = handlePlurals(resources['plurals']);

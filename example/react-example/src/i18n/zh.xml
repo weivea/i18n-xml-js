@@ -1,0 +1,24 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string-array name="citys">
+      <item>北京</item>
+      <item>上海</item>
+      <item>济南</item>
+      <item>青岛</item>
+    </string-array>
+    <plurals name="wastetime">
+      <item quantity="one">%d 分钟</item>
+      <item quantity="other">%d 分钟</item>
+    </plurals>
+    <string name="welcome_messages">你好, %1$s! 你有 %2$d 新消息.</string>
+    <string name="app_name" translatable="false">应用市场</string>
+    <string name="pref_title_auto_update_market">自动更新 "应用市场"</string>
+    <string name="notif_button_update_all"><![CDATA[<font color=#ff6243>更新全部</font>]]></string> <!--仅海外按钮高亮-->
+    <string name="btn_retry">再试一次</string>
+    <string name="btn_price">￥<xliff:g id="priceNumber">%1$s</xliff:g></string>
+    <string name="btn_progress"><xliff:g id="precentage">%1$d</xliff:g>%%</string>
+    <string name="btn_pausable">暂停</string>
+    <string name="user_agreement_msg"><![CDATA[To 要使用慈祥基础服务, 你需要同意本应用搜集和使用您的个人信息, 巴拉巴拉吧啦 <a href=\"%1$s\">隐私政策</a>. 您是否同意?]]></string>
+</resources>

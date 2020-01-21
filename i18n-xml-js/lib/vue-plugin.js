@@ -1,5 +1,5 @@
 import { I18nJsClass, setLocal,  plurals} from '../index.js';
-
+export {default as I18nJs} from '../index.js'
 
 let _Vue;
 let i18Vm;
@@ -83,7 +83,7 @@ function setVueLocal(local) {
         }
       },
       computed: {
-        $local() {
+        _local() {
           return this.local;
         }
       }
@@ -105,6 +105,11 @@ const plugin = {
       throw new Error('需要参数 opt.i18 是 I18nJsClass 的实例化对象');
     }
     Object.defineProperties(Vue.prototype, {
+      $local: {
+        get() {
+          return vueLocalVm._local
+        }
+      },
       $lang: {
         get() {
           return langVueVm._lang

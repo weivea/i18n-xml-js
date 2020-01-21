@@ -51,7 +51,7 @@ const i18nJsVMList = [];
 export class I18nJsClass {
   /**
    * @param {翻译语言} langs 
-   * @param {默认用英语作为备份语言 default: 'en'} backup 
+   * @param {备份f翻译 default: 'en'} backup 
    */
   constructor(langs={}, backup){
     this.backup = backup || defaultLocal;

@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "core-js": "^3.4.4",
-    "i18-xml-js": "file:../../i18-xml-js",
+    "i18n-xml-js": "file:../../i18n-xml-js",
     "vue": "^2.6.10"
   },
   "devDependencies": {
