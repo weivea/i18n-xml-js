@@ -67,13 +67,13 @@ export const I18nProvider = (props) => {
         setLocal(local);
         const langModule = _getLangModule();
         setValue(Object.assign({}, value, {
-          lang: props.lang.lang,
+          lang: props.i18n.lang,
           langModule,
           local: local
         }))
       }
       return {
-        lang: props.lang.lang,
+        lang: props.i18n.lang,
         local: defaultLocal || 'en',
         langModule,
         setLocal: _setLocal,
@@ -90,5 +90,5 @@ export const I18nProvider = (props) => {
 
 I18nProvider.propTypes = {
   defaultLocal: PropTypes.string,
-  lang: PropTypes.instanceOf(I18nJsClass)
+  i18n: PropTypes.instanceOf(I18nJsClass)
 }

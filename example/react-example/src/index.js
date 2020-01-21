@@ -10,7 +10,7 @@ import en from './i18n/en.js'
 const i18n = new I18nJs({en, zh}, 'en');
 
 
-ReactDOM.render(<I18nProvider lang={i18n} defaultLocal={'zh'}><App/></I18nProvider>, document.getElementById('root'));
+ReactDOM.render(<I18nProvider i18n={i18n} defaultLocal={'zh'}><App/></I18nProvider>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

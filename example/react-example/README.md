@@ -1,4 +1,5 @@
 # react-example
+安装依赖：`nom install`
 编译xml的翻译资源文件：`npm run parseFormXML`
 启动：`npm start`
 
