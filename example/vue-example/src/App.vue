@@ -8,13 +8,21 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import CustomI8 from './components/CustomI8.vue'
+// import CustomI8 from './components/CustomI8.vue'
 
 export default {
   name: 'app',
   components: {
     HelloWorld,
-    CustomI8
+    // CustomI8,
+    // 异步
+    CustomI8: ()=>new Promise((resolve, reject)=>{
+      import('./components/CustomI8.vue').then((com)=>{
+        setTimeout(()=>{
+          resolve(com);
+        }, 3000)
+      })
+    })
   }
 }
 </script>

@@ -9,6 +9,7 @@
 </template>
 <script>
 import I18nJs from 'i18n-xml-js';
+import {registerI18nModule} from 'i18n-xml-js/lib/vue-plugin';
 const customI18Module = new I18nJs({
   en:{
     string:{
@@ -23,11 +24,11 @@ const customI18Module = new I18nJs({
     }
   }
 });
+registerI18nModule('custom', customI18Module)
+
+
 export default {
   name:'CustomI8',
-  beforeCreate () {
-    this.$registerI18nModule('custom', customI18Module)
-  }
 }
 </script>
 
