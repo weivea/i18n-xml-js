@@ -257,7 +257,7 @@ setLocal('en')
 ```
 
 # addPluralization
-增加复数判断器 
+增加复数判断器 ,i18n-xml-js 默认只包含en(英语)，zh(中文)的复数判断器
 ```javascript
 import {addPluralization} from 'i18n-xml-js';
 //...
