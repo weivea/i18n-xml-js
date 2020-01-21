@@ -17,7 +17,8 @@ npm install i18n-xml-js --save
 
 ## Usage
 
-[Vue插件使用文档](https://github.com/weivea/i18n-xml-js/tree/master/vuePlugin.md)
+[Vue插件使用文档](https://github.com/weivea/i18n-xml-js/tree/master/vuePlugin.md)    
+
 [React插件使用文档](https://github.com/weivea/i18n-xml-js/tree/master/reactPlugin.md)
 
 
