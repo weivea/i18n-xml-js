@@ -154,7 +154,7 @@ addPluralization({
 
 ```
 
-#### 编译符合android国际化规范的xml资源文件为js
+## 编译符合android国际化规范的xml资源文件为js
 
 具体可以参考 [react-example](https://github.com/weivea/i18n-xml-js/tree/master/example/react-example)
 
