@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import { I18nJsClass, setLocal,  plurals} from '../index.js';
-export {default as I18nJs} from '../index.js'
+export {default as I18nJs, addPluralization} from '../index.js'
 
 let _Vue;
 let i18Vm;
