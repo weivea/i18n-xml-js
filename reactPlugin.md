@@ -1,6 +1,6 @@
 # i18n-xml-js/lib/react-plugin
 
-[Vue在线示例](https://weivea.github.io/i18n-xml-js/react)   
+[React在线示例](https://weivea.github.io/i18n-xml-js/react)   
 
 [示例代码](https://github.com/weivea/i18n-xml-js/tree/master/example/react-example)
 
