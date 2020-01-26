@@ -3,7 +3,8 @@
 js端的国际化 多语言处理方案，   
 
 . 可以适配react， 建议v16.12.0 以上版本  
-. 可以适配vue 2.x, 建议v2.6.x 以上版本    
+. 可以适配vue 2.x, 建议v2.6.x 以上版本     
+. 在 Vue和 React 下由于页面业务复杂，允许子组件注册独立的 国际化模块    
 . **可以将android规范下的国际化多语言资源文件 strings.xml, 编译为自己所需要的js资源文件**   
 
 **复数判断参考**
@@ -20,6 +21,10 @@ npm install i18n-xml-js --save
 [Vue插件使用文档](https://github.com/weivea/i18n-xml-js/tree/master/vuePlugin.md)    
 
 [React插件使用文档](https://github.com/weivea/i18n-xml-js/tree/master/reactPlugin.md)
+
+[Vue在线示例](https://weivea.github.io/i18n-xml-js/)   
+
+[React在线示例](https://weivea.github.io/i18n-xml-js/react/)
 
 
 最简单的例子：
@@ -252,7 +257,7 @@ setLocal('en')
 ```
 
 # addPluralization
-增加复数判断器 
+增加复数判断器 ,i18n-xml-js 默认只包含en(英语)，zh(中文)的复数判断器
 ```javascript
 import {addPluralization} from 'i18n-xml-js';
 //...
