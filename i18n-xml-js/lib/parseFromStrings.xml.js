@@ -181,8 +181,15 @@ function handlePlurals(plurals) {
 // 把有变量的私字符串，变成函数字符串
 function replaceVariable(str) {
   if (/%[ds]|%\d\$[ds]/.test(str)) {
-    var argInd = 0
-    const rstr = str.replace(/%[ds]|%\d\$[ds]/g,(a,b,c)=>{
+    var argInd = 0;
+    let rstr = str.replace(/%(\d)\$[ds]/g,(a,b,c)=>{
+      let num = parseInt(b);
+      if(!isNaN(num) && num>0 && num > argInd) {
+        argInd = num;
+      }
+      return `\${arg[${num-1}]}`;
+    })
+    rstr = rstr.replace(/%[ds]/g,(a,b,c)=>{
       return `\${arg[${argInd++}]}`;
     })
     return `(...arg)=>\`${rstr}\``

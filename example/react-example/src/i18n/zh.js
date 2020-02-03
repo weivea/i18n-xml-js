@@ -19,7 +19,7 @@ const local = {
     "btn_price": (...arg) => `￥${arg[0]}`,
     "btn_progress": (...arg) => `${arg[0]}%%`,
     "btn_pausable": "暂停",
-    "user_agreement_msg": (...arg) => `要使用慈祥基础服务, 你需要同意本应用搜集和使用您的个人信息, 巴拉巴拉吧啦 <a href=\"${arg[0]}\">隐私政策</a>. 您是否同意?`
+    "user_agreement_msg": (...arg) => `To 要使用本应用基础服务, 你需要同意本应用搜集和使用您的个人信息, 巴拉巴拉吧啦 <a href=\"${arg[0]}\">隐私政策</a>. 您是否同意?`
   }
 };
 export default local;
