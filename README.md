@@ -5,7 +5,9 @@ js端的国际化 多语言处理方案，
 . 可以适配react(动态切换语言)， 建议v16.12.0 以上版本  
 . 可以适配vue 2.x(动态切换语言), 建议v2.6.x 以上版本     
 . 在 Vue和 React 下由于页面业务复杂，允许子组件注册独立的 国际化模块    
-. **可以将android规范下的国际化多语言资源文件 strings.xml, 编译为自己所需要的js资源文件**   
+. **可以将android规范下的国际化多语言资源文件 strings.xml, 编译为自己所需要的js资源文件**     
+
+[Android下 strings.xml书写规范参考 ](https://developer.android.com/guide/topics/resources/string-resource?hl=zh-cn)
 
 **复数判断参考**
 http://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html
